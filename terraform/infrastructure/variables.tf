@@ -15,17 +15,17 @@ variable "handler" {
 }
 
 variable "runtime" {
-  type = string
-  default = "python3.7"
+  type    = string
+  default = "python3.11"
 }
 
 variable "memory_size" {
-  type = string
+  type    = string
   default = "128"
 }
 
 variable "timeout" {
-  type = string
+  type    = string
   default = "200"
 }
 

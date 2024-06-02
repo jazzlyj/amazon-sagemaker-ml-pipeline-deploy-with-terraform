@@ -34,6 +34,30 @@ everything is correct. Once successfully applied, go to ECR (or check the output
 and get the URL for your ECR repository just created via Terraform.
 
 
+#### NOTES:
+* Turn off "block public access" 
+* Buckets need to have ACLs turned on 
+  
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Enable ACLs",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:PutBucketAcl",
+                "s3:GetBucketAcl"
+            ],
+            "Resource": "arn:aws:s3:::<bucketname>"
+        }
+    ]
+}
+```
+
+
+
 ### Push your Docker Image to ECR
 
 For the ML pipeline and SageMaker to train and provision an endpoint for inference, you need to provide a Docker image and store it in ECR.
